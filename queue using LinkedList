@@ -1,0 +1,73 @@
+
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+
+public class queueUsingLL 
+{
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+          this.data=data;
+        }
+    }
+    static Node head=null;
+    static Node temp=null;
+    static Node front=head;
+    static Node rear=head;
+    int size=0;
+    void insertNode(int x)
+    {
+        Node newnode=new Node(x);
+        if(head==null)
+        {
+           head=newnode;
+           temp=head;
+           front=rear=head;
+           size++;
+        }
+        else
+        {
+          temp.next=newnode;
+          temp=newnode; 
+          rear=temp;  
+          size++;
+        }
+    }
+    static void printLL()
+    {
+        Node temp1=head;
+        while(temp1!=null)
+        {
+            System.out.println(temp1.data);
+            temp1=temp1.next;
+        }
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        while(true)
+        {
+        System.out.println("enter the choice 1 to add node,2 print linked list");
+        int ch=sc.nextInt();
+        queueUsingLL obj=new queueUsingLL();
+        switch(ch)
+        {
+            case 1:
+                System.out.println("enter the data ");
+                int x=sc.nextInt();
+                obj.insertNode(x);
+                break;
+            case 2:
+                printLL();
+                break;
+            default:
+                System.out.println("Invalid input");
+                break;
+        }
+    }    
+  }
+}
